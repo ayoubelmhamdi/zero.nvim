@@ -1,6 +1,11 @@
+
 #  highlighting, indentation, Incremental selection or folding are disable by default
+#### # enable highlight for c and rust  
+```lua
+use 'config-nvim/treesitter-for-c'
+```
 <details>
-<summary> enable highlight for c and rust </summary>
+<summary> config  </summary> 
 
 ```lua
 require'nvim-treesitter.configs'.setup {
@@ -13,12 +18,14 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 ```
-
 </details>
 
-
+#### # enable highlight for c only
+```lua
+use 'config-nvim/treesitter-for-c'
+```
 <details>
-<summary> enable highlight for c only </summary>
+<summary> config  </summary> 
 
 ```lua
 require'nvim-treesitter.configs'.setup {
