@@ -1,4 +1,3 @@
-
 #  highlighting, indentation, Incremental selection or folding are disable by default
 <details>
 <summary> enable highlight for c and rust </summary>
