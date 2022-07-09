@@ -2,7 +2,7 @@
 #  highlighting, indentation, Incremental selection or folding are disable by default
 #### # enable highlight for c and rust  
 ```lua
-use 'config-nvim/treesitter-for-c'
+use 'config-nvim/treesitter-for-c-and-rust'
 ```
 <details>
 <summary> config  </summary> 
