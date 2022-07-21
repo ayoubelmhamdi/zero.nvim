@@ -3,13 +3,15 @@ vim.opt.termguicolors = true
 vim.o.background = 'dark'
 vim.cmd 'colorscheme gruvbox'
 
-return require('packer').startup(function()
+vim.cmd 'set cole=2'
+
+require('packer').startup(function()
     use { 'wbthomason/packer.nvim', requires = { 'nvim-lua/popup.nvim', 'kyazdani42/nvim-web-devicons' } }
 
     -- LSP
-    use { 'neovim/nvim-lspconfig', requires = { 'config-nvim/cfg-lspconfig.nvim', 'SmiteshP/nvim-navic' } }
-    use { 'onsails/lspkind-nvim', requires = 'config-nvim/cfg-lspkind.nvim' }
-    use { 'jose-elias-alvarez/null-ls.nvim', requires = 'config-nvim/cfg-null-ls.nvim' }
+    use { 'neovim/nvim-lspconfig', requires = { '~/Git/plugin/lspconfig.nvim', 'SmiteshP/nvim-navic' } }
+    use { 'onsails/lspkind-nvim', requires = '~/Git/plugin/lspkind.nvim' }
+    use { 'jose-elias-alvarez/null-ls.nvim', requires = '~/Git/plugin/null-ls.nvim' }
     use { 'akinsho/flutter-tools.nvim' }
     use { 'glepnir/lspsaga.nvim' }
     use { 'ray-x/lsp_signature.nvim' }
@@ -19,12 +21,15 @@ return require('packer').startup(function()
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- tree-Sitter: "nvim-treesitter/nvim-treesitter"
-    use { 'thmsmlr/nvim-treesitter', requires = 'config-nvim/cfg-tree-sitter.nvim' }
+    use {
+        'thmsmlr/nvim-treesitter',
+        requires = { '~/Git/plugin/tree-sitter.nvim', '~/Git/plugin/tree-sitter-tweek.nvim' },
+    }
     use { 'David-Kunz/treesitter-unit' }
     use { 'lewis6991/spellsitter.nvim' }
 
     -- nvim-cmp
-    use { 'hrsh7th/nvim-cmp', requires = 'config-nvim/cfg-cmp.nvim' }
+    use { 'hrsh7th/nvim-cmp', requires = '~/Git/plugin/cmp.nvim' }
     use { 'L3MON4D3/LuaSnip' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'hrsh7th/cmp-buffer' }
@@ -36,19 +41,19 @@ return require('packer').startup(function()
     use { 'f3fora/cmp-spell' }
 
     -- dap
-    use { 'mfussenegger/nvim-dap', requires = { 'config-nvim/cfg-dap.nvim', 'config-nvim/cfg-c-dap.nvim' } }
+    use { 'mfussenegger/nvim-dap', requires = { '~/Git/plugin/dap.nvim', '~/Git/plugin/c-dap.nvim' } }
     use { 'rcarriga/nvim-dap-ui' }
     use { 'theHamsta/nvim-dap-virtual-text' }
     use { 'leoluz/nvim-dap-go' }
 
     -- plugin
 
-    use { 'ur4ltz/surround.nvim', requires = 'config-nvim/cfg-surround.nvim' }
-    use { 'windwp/nvim-autopairs', requires = 'config-nvim/cfg-autopair.nvim' }
-    use { 'numToStr/Comment.nvim', requires = 'config-nvim/cfg-comment.nvim' }
+    use { 'ur4ltz/surround.nvim', requires = '~/Git/plugin/surround.nvim' }
+    use { 'windwp/nvim-autopairs', requires = '~/Git/plugin/autopair.nvim' }
+    use { 'numToStr/Comment.nvim', requires = '~/Git/plugin/comment.nvim' }
 
     -- git
-    use { 'sindrets/diffview.nvim', require = 'config-nvim/cfg-diffview.nvim' }
+    use { 'sindrets/diffview.nvim', require = '~/Git/plugin/diffview.nvim' }
     use { 'TimUntersberger/neogit' }
     use { 'lewis6991/gitsigns.nvim' }
     use { 'airblade/vim-rooter' }
@@ -62,23 +67,42 @@ return require('packer').startup(function()
     use { 'lewis6991/impatient.nvim' }
 
     -- Explorer & Terminal
-    use { 'luukvbaal/nnn.nvim', requires = 'config-nvim/cfg-nnn.nvim' }
+    use { 'luukvbaal/nnn.nvim', requires = '~/Git/plugin/nnn.nvim' }
     use { 'voldikss/vim-floaterm' }
     use { 'static-nvim/mkdir' }
     use { 'fedepujol/move.nvim' }
 
     -- Theme
     use { 'lukas-reineke/indent-blankline.nvim' }
-    use { 'nvim-lualine/lualine.nvim', requires = 'config-nvim/cfg-statusline.nvim' }
+    use { 'nvim-lualine/lualine.nvim', requires = '~/Git/plugin/statusline.nvim' }
     use { 'norcalli/nvim-colorizer.lua' }
     use { 'tjdevries/colorbuddy.nvim' }
     use { 'ellisonleao/gruvbox.nvim' }
 
     -- config
-    use { 'config-nvim/cfg-autocmd.nvim' }
-    use { 'config-nvim/cfg-set-setting.nvim' }
-    use { 'config-nvim/cfg-keymaping.nvim' }
-    use { 'config-nvim/cfg-test' }
-    use { 'config-nvim/cfg-toglle_terminal.nvim' }
-    use { 'config-nvim/cfg-highlight.nvim' }
+    use { '~/Git/plugin/autocmd.nvim' }
+    use { '~/Git/plugin/set-setting.nvim' }
+    use { '~/Git/plugin/keymaping.nvim' }
+    use { '~/Git/plugin/test' }
+    use { '~/Git/plugin/toglle_terminal.nvim' }
+    use { '~/Git/plugin/highlight.nvim' }
 end)
+
+
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set("n",  "<F10>" , function()
+	if vim.o.conceallevel > 0 then
+		vim.o.conceallevel = 0
+	else
+		vim.o.conceallevel = 2
+	end
+end, opts)
+
+vim.keymap.set("n",  "<F11>" , function()
+	if vim.o.concealcursor == "n" then
+		vim.o.concealcursor = ""
+	else
+		vim.o.concealcursor = "n"
+	end
+end, opts)
