@@ -3,7 +3,8 @@ vim.opt.termguicolors = true
 vim.o.background = 'dark'
 vim.cmd 'colorscheme gruvbox'
 
-vim.cmd 'set cole=2'
+vim.cmd 'set cole=1'
+vim.cmd 'set switchbuf=usetab'
 
 require('packer').startup(function()
     use { 'wbthomason/packer.nvim', requires = { 'nvim-lua/popup.nvim', 'kyazdani42/nvim-web-devicons' } }
@@ -51,6 +52,7 @@ require('packer').startup(function()
     use { 'ur4ltz/surround.nvim', requires = '~/Git/plugin/surround.nvim' }
     use { 'windwp/nvim-autopairs', requires = '~/Git/plugin/autopair.nvim' }
     use { 'numToStr/Comment.nvim', requires = '~/Git/plugin/comment.nvim' }
+    use {'kevinhwang91/nvim-hlslens', requires = '~/Git/plugin/hlslens.nvim'}
 
     -- git
     use { 'sindrets/diffview.nvim', require = '~/Git/plugin/diffview.nvim' }
@@ -67,7 +69,7 @@ require('packer').startup(function()
     use { 'lewis6991/impatient.nvim' }
 
     -- Explorer & Terminal
-    use { 'luukvbaal/nnn.nvim', requires = '~/Git/plugin/nnn.nvim' }
+    use { 'luukvbaal/nnn.nvim', requires = '~/Git/plugin/cfg-nnn.nvim' }
     use { 'voldikss/vim-floaterm' }
     use { 'static-nvim/mkdir' }
     use { 'fedepujol/move.nvim' }
