@@ -1,3 +1,6 @@
+local pattern = "*.sh"
+local command = { "./sh.sh" }
+
 -- It's our main starting function. For now we will only creating navigation window here.
 local win
 local start_win
@@ -42,30 +45,46 @@ Create_win = function()
 end
 
 
-local attach_to_buffer = function(output_bufnr, pattern, command)
+
+
+local attach_to_buffer = function()
     vim.api.nvim_create_autocmd('BufWritePost', {
         group = vim.api.nvim_create_augroup('TJ', { clear = true }),
         pattern = pattern,
         callback = function()
+            local append_data = function(_, data)
+                if data then
+                    vim.api.nvim_buf_set_lines(buf, -1, -1, false, data)
+                    -- else
+                    --     print 'test1'
+                end
+            end
+            vim.api.nvim_buf_set_lines(buf, 0, -1, false, {"output ayoub"})
+            vim.fn.jobstart(command, {
+                stdout_buffered = true,
+                on_stdout = append_data,
+                on_stderr = append_data,
+            })
         end,
     })
 end
 
-vim.api.nvim_create_user_command('AutoRun', function()
-    local bufnr = vim.fn.input "Bufnr: "
-    local pattern = vim.fn.input "Pattern: "
-    local command = vim.split(vim.fn.input "Command: ", " ")
-    attach_to_buffer(tonumber(bufnr),pattern,command)
-end, {})
-
--- print("buf: " .. buf)
-attach_to_buffer(buf,"*.sh",{"./sh.sh"})
 
 
-    vim.api.nvim_create_autocmd('BufWinEnter', {
-        group = vim.api.nvim_create_augroup('Ay', { clear = true }),
-        pattern = "*.sh",
-        callback = function()
-        Create_win()
-        end,
-    })
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	group = vim.api.nvim_create_augroup("Ay", { clear = true }),
+	pattern = pattern,
+	callback = function()
+		Create_win()
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+group = vim.api.nvim_create_augroup("TJ", { clear = true }),
+pattern = pattern,
+callback = function()
+    attach_to_buffer()
+end,
+})
+
+
