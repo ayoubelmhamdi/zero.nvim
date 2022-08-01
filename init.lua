@@ -52,7 +52,7 @@ require('packer').startup(function()
     use { 'ur4ltz/surround.nvim', requires = '~/Git/plugin/surround.nvim' }
     use { 'windwp/nvim-autopairs', requires = '~/Git/plugin/autopair.nvim' }
     use { 'numToStr/Comment.nvim', requires = '~/Git/plugin/comment.nvim' }
-    use {'kevinhwang91/nvim-hlslens', requires = '~/Git/plugin/hlslens.nvim'}
+    use { 'kevinhwang91/nvim-hlslens', requires = '~/Git/plugin/hlslens.nvim' }
 
     -- git
     use { 'sindrets/diffview.nvim', require = '~/Git/plugin/diffview.nvim' }
@@ -89,22 +89,3 @@ require('packer').startup(function()
     use { '~/Git/plugin/toglle_terminal.nvim' }
     use { '~/Git/plugin/highlight.nvim' }
 end)
-
-
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set("n",  "<F10>" , function()
-	if vim.o.conceallevel > 0 then
-		vim.o.conceallevel = 0
-	else
-		vim.o.conceallevel = 2
-	end
-end, opts)
-
-vim.keymap.set("n",  "<F11>" , function()
-	if vim.o.concealcursor == "n" then
-		vim.o.concealcursor = ""
-	else
-		vim.o.concealcursor = "n"
-	end
-end, opts)
