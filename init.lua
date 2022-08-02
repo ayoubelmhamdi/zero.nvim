@@ -10,9 +10,9 @@ require('packer').startup(function()
     use { 'wbthomason/packer.nvim', requires = { 'nvim-lua/popup.nvim', 'kyazdani42/nvim-web-devicons' } }
 
     -- LSP
-    use { 'neovim/nvim-lspconfig', requires = { '~/Git/plugin/lspconfig.nvim', 'SmiteshP/nvim-navic' } }
-    use { 'onsails/lspkind-nvim', requires = '~/Git/plugin/lspkind.nvim' }
-    use { 'jose-elias-alvarez/null-ls.nvim', requires = '~/Git/plugin/null-ls.nvim' }
+    use { 'neovim/nvim-lspconfig', requires = { '~/Git/plugin/cfg-lspconfig.nvim', 'SmiteshP/nvim-navic' } }
+    use { 'onsails/lspkind-nvim', requires = '~/Git/plugin/cfg-lspkind.nvim' }
+    use { 'jose-elias-alvarez/null-ls.nvim', requires = '~/Git/plugin/cfg-null-ls.nvim' }
     use { 'akinsho/flutter-tools.nvim' }
     use { 'glepnir/lspsaga.nvim' }
     use { 'ray-x/lsp_signature.nvim' }
@@ -25,14 +25,14 @@ require('packer').startup(function()
     use {
         -- 'thmsmlr/nvim-treesitter',
         'nvim-treesitter/nvim-treesitter',
-        requires = { '~/Git/plugin/tree-sitter.nvim', '~/Git/plugin/tree-sitter-tweek.nvim' },
+        requires = { '~/Git/plugin/cfg-tree-sitter.nvim', '~/Git/plugin/cfg-tree-sitter-tweek.nvim' },
     }
     use { 'David-Kunz/treesitter-unit' }
     use { 'lewis6991/spellsitter.nvim' }
 
     -- nvim-cmp
-    use { 'hrsh7th/nvim-cmp', requires = '~/Git/plugin/cmp.nvim' }
-    use { 'L3MON4D3/LuaSnip' }
+    use { 'hrsh7th/nvim-cmp', requires = '~/Git/plugin/cfg-cmp.nvim' }
+    use { 'L3MON4D3/LuaSnip', requires = '~/Git/plugin/cfg-luasnip.nvim' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'hrsh7th/cmp-buffer' }
     use { 'hrsh7th/cmp-nvim-lua' }
@@ -43,20 +43,20 @@ require('packer').startup(function()
     use { 'f3fora/cmp-spell' }
 
     -- dap
-    use { 'mfussenegger/nvim-dap', requires = { '~/Git/plugin/dap.nvim', '~/Git/plugin/c-dap.nvim' } }
+    use { 'mfussenegger/nvim-dap', requires = { '~/Git/plugin/cfg-dap.nvim', '~/Git/plugin/cfg-c-dap.nvim' } }
     use { 'rcarriga/nvim-dap-ui' }
     use { 'theHamsta/nvim-dap-virtual-text' }
     use { 'leoluz/nvim-dap-go' }
 
     -- plugin
 
-    use { 'ur4ltz/surround.nvim', requires = '~/Git/plugin/surround.nvim' }
-    use { 'windwp/nvim-autopairs', requires = '~/Git/plugin/autopair.nvim' }
-    use { 'numToStr/Comment.nvim', requires = '~/Git/plugin/comment.nvim' }
-    use { 'kevinhwang91/nvim-hlslens', requires = '~/Git/plugin/hlslens.nvim' }
+    use { 'ur4ltz/surround.nvim', requires = '~/Git/plugin/cfg-surround.nvim' }
+    use { 'windwp/nvim-autopairs', requires = '~/Git/plugin/cfg-autopair.nvim' }
+    use { 'numToStr/Comment.nvim', requires = '~/Git/plugin/cfg-comment.nvim' }
+    use { 'kevinhwang91/nvim-hlslens', requires = '~/Git/plugin/cfg-hlslens.nvim' }
 
     -- git
-    use { 'sindrets/diffview.nvim', require = '~/Git/plugin/diffview.nvim' }
+    use { 'sindrets/diffview.nvim', require = '~/Git/plugin/cfg-diffview.nvim' }
     use { 'TimUntersberger/neogit' }
     use { 'lewis6991/gitsigns.nvim' }
     use { 'airblade/vim-rooter' }
@@ -77,16 +77,16 @@ require('packer').startup(function()
 
     -- Theme
     use { 'lukas-reineke/indent-blankline.nvim' }
-    use { 'nvim-lualine/lualine.nvim', requires = '~/Git/plugin/statusline.nvim' }
+    use { 'nvim-lualine/lualine.nvim', requires = '~/Git/plugin/cfg-statusline.nvim' }
     use { 'norcalli/nvim-colorizer.lua' }
     use { 'tjdevries/colorbuddy.nvim' }
     use { 'ellisonleao/gruvbox.nvim' }
 
     -- config
-    use { '~/Git/plugin/autocmd.nvim' }
-    use { '~/Git/plugin/set-setting.nvim' }
-    use { '~/Git/plugin/keymaping.nvim' }
-    use { '~/Git/plugin/test' }
-    use { '~/Git/plugin/toglle_terminal.nvim' }
-    use { '~/Git/plugin/highlight.nvim' }
+    use { '~/Git/plugin/cfg-autocmd.nvim' }
+    use { '~/Git/plugin/cfg-set-setting.nvim' }
+    use { '~/Git/plugin/cfg-keymaping.nvim' }
+    use { '~/Git/plugin/cfg-test' }
+    use { '~/Git/plugin/cfg-toglle_terminal.nvim' }
+    use { '~/Git/plugin/cfg-highlight.nvim' }
 end)
