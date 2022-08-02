@@ -23,7 +23,8 @@ require('packer').startup(function()
 
     -- tree-Sitter: "nvim-treesitter/nvim-treesitter"
     use {
-        'thmsmlr/nvim-treesitter',
+        -- 'thmsmlr/nvim-treesitter',
+        'nvim-treesitter/nvim-treesitter',
         requires = { '~/Git/plugin/tree-sitter.nvim', '~/Git/plugin/tree-sitter-tweek.nvim' },
     }
     use { 'David-Kunz/treesitter-unit' }
